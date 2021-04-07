@@ -6,8 +6,15 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
+// Option 3 Creating a Object declaration
+object mDataBaseHanlerObject {
+    fun create(context: Context) = DataBaseHandler(context)
+}
 
+//Option 2
+// open class DataBaseHandler (var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null,
 
+// option 1 and 3
 class DataBaseHandler (var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null,
     1) {
 

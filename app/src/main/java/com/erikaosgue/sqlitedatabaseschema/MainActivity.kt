@@ -1,5 +1,6 @@
 package com.erikaosgue.sqlitedatabaseschema
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -13,11 +14,17 @@ class MainActivity : AppCompatActivity() {
  		activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
  		setContentView(activityMainBinding.root)
 
-		//Get Instance of the DataBase
-		val db = DataBaseHandler(this)
+		//1. Get Instance of the DataBase
+		// val db = DataBaseHandler(this)
+
+		//2. Creating an Object declaration to use as a singleton
+		//val db = object : DataBaseHandler(this) {}
+
+		//3. Calling the object declaration with the function to use as a singleton
+		val db = mDataBaseHanlerObject.create(this)
 
 		//Insert the data to the Database when click button
-		btnInsert.setOnClickListener {
+		activityMainBinding.btnInsert.setOnClickListener {
 
 			if (editTextName.text.toString().isNotEmpty() && editTextAge.text.toString().isNotEmpty()) {
 
